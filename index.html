@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>名大レゴ部 - Nagoya University LEGO User Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="lego-stack">
+                <div class="brick red"></div>
+                <div class="brick blue"></div>
+                <div class="brick yellow"></div>
+                <div class="brick green"></div>
+            </div>
+            <p>Building imagination...</p>
+        </div>
+    </div>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon"></span>
+                名大レゴ部
+            </a>
+            <nav class="nav-links">
+                <a href="#about">レゴ部について</a>
+                <a href="#gallery">作品ギャラリー</a>
+                <a href="#columns">活動報告</a>
+                <a href="#sns">SNS</a>
+                <a href="#contact" class="btn-primary">お問い合わせ</a>
+            </nav>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-bg" style="background-image: url('file:///C:/Users/orang/.gemini/antigravity/brain/1fb81182-5890-4f90-849b-30c6b35bebcd/lego_club_hero_1776748830832.png');"></div>
+            <div class="hero-content container fade-in-up">
+                <h1 class="hero-title">想像を、創造に。</h1>
+                <p class="hero-subtitle">Nagoya University LEGO User Group<br>私たちはレゴブロックを通して、新しい表現を探求します。</p>
+                <div class="hero-actions">
+                    <a href="#gallery" class="btn-primary">作品を見る</a>
+                    <a href="#about" class="btn-secondary">部について</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container fade-in-up">
+                <div class="section-header">
+                    <h2>名大レゴ部</h2>
+                    <p class="section-desc">名古屋大学レゴ部は名大生によるレゴサークルです。学部生から院生まで楽しく活動しています<br>レゴブロックを用いた作品制作、教育・セミナー活動、他大学との交流を行っています</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon yellow-bg-circle">
+                            <span class="icon-white">✎</span>
+                        </div>
+                        <h3>教育・セミナー活動</h3>
+                        <p>レゴ部では子供向けワークショップを中心に、様々なイベントを開催しています。その他活動については活動報告をご覧ください。</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon yellow-bg-circle">
+                            <span class="icon-white">🔧</span>
+                        </div>
+                        <h3>レゴ作品製作</h3>
+                        <p>レゴ部では各々の作品制作に加え、作品の製作依頼も承っております。製作した作品はギャラリーで公開しています。</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon yellow-bg-circle">
+                            <span class="icon-white">👥</span>
+                        </div>
+                        <h3>他大学との交流</h3>
+                        <p>レゴ部ではレゴを広める活動として他大学と連携し、交流を行っています。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="section bg-light">
+            <div class="container">
+                <div class="section-header fade-in-up">
+                    <h2>作品ギャラリー</h2>
+                    <p>Works Gallery</p>
+                </div>
+                
+                <div class="gallery-filters fade-in-up">
+                    <button class="filter-btn active" data-filter="all">すべて</button>
+                    <button class="filter-btn" data-filter="architecture">建築</button>
+                    <button class="filter-btn" data-filter="character">キャラクター</button>
+                    <button class="filter-btn" data-filter="mechanism">機構</button>
+                </div>
+
+                <div class="gallery-grid">
+                    <!-- JavaScriptによりdata/gallery.jsonから動的に生成されます -->
+                    <div class="loading-spinner">読み込み中...</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="columns" class="section">
+            <div class="container">
+                <div class="section-header fade-in-up">
+                    <h2>活動報告</h2>
+                    <p>Activity Reports</p>
+                </div>
+                <div class="columns-grid">
+                    <article class="column-card fade-in-up">
+                        <div class="column-date">2026.04.15</div>
+                        <h3>名大祭に向けた大型企画が始動！</h3>
+                        <p class="column-excerpt">今年の学祭展示に向けて、メンバー全員で新しいジオラマ制作に取り掛かりました。テーマは「未来の名古屋」です...</p>
+                        <span class="column-source wood-text">GoogleフォームよりAI自動生成</span>
+                    </article>
+                    <article class="column-card fade-in-up" style="transition-delay: 0.1s;">
+                        <div class="column-date">2026.03.20</div>
+                        <h3>新入生歓迎会の準備について</h3>
+                        <p class="column-excerpt">春からの新入生に向けて、体験用のレゴキットを準備中。今年は初めてテクニックパーツを使った簡単な機構も...</p>
+                        <span class="column-source wood-text">GoogleフォームよりAI自動生成</span>
+                    </article>
+                </div>
+                <div class="text-center mt-4 fade-in-up">
+                    <a href="#" class="btn-text">コラム一覧を見る →</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="sns" class="section bg-dark text-white">
+            <div class="container">
+                <div class="section-header fade-in-up">
+                    <h2>SNSフィード</h2>
+                    <p>Latest Feed</p>
+                </div>
+                <div class="sns-grid">
+                    <div class="sns-widget x-widget fade-in-up">
+                        <div class="sns-header">
+                            <span class="sns-icon">𝕏</span>
+                            <h4>@NU_Lego</h4>
+                        </div>
+                        <div class="sns-content">
+                            <p>本日の部会では新作の設計レビューを行いました！パーツの発注も完了し、来週から本格的に組み始めます。お楽しみに！ #名大レゴ部</p>
+                            <span class="sns-time">2時間前</span>
+                        </div>
+                    </div>
+                    <div class="sns-widget instagram-widget fade-in-up" style="transition-delay: 0.1s;">
+                        <div class="sns-header">
+                            <span class="sns-icon">📷</span>
+                            <h4>Instagram</h4>
+                        </div>
+                        <div class="sns-content placeholder-img wood-bg" style="height: 200px;">
+                            <span class="placeholder-text">最新のInstagram投稿<br>(API連携予定)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container fade-in-up">
+                <div class="contact-wrapper wood-border">
+                    <div class="contact-info">
+                        <h2>お問い合わせ</h2>
+                        <p>制作依頼・出展依頼のお問い合わせ</p>
+                        <p class="mt-2 text-sm text-gray">送信いただいた内容はDiscord経由で即時部員に共有されます。</p>
+                    </div>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">お名前 / 団体名</label>
+                            <input type="text" id="name" placeholder="名古屋 太郎" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">メールアドレス</label>
+                            <input type="email" id="email" placeholder="example@nu-lego.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="type">ご依頼種別</label>
+                            <select id="type">
+                                <option value="production">制作依頼</option>
+                                <option value="exhibition">出展依頼</option>
+                                <option value="other">その他</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">ご依頼内容</label>
+                            <textarea id="message" rows="4" placeholder="詳細をご記入ください" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full">送信する (Discordへ通知)</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h3>名大レゴ部</h3>
+                <p>Nagoya University LEGO User Group</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">プライバシーポリシー</a>
+                <a href="#contact">お問い合わせ</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 名大レゴ部. All rights reserved. Powered by Antigravity.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
