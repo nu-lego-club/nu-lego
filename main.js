@@ -42,14 +42,55 @@ document.addEventListener('DOMContentLoaded', () => {
     // 初回実行（HTMLに元々ある要素用）
     initObserver();
 
-    // 2. Dynamic Gallery Loading
+    // --- Modal Control ---
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-close">✕</div>
+            <div class="modal-body">
+                <div class="modal-img-side">
+                    <img src="" alt="" id="modal-img">
+                </div>
+                <div class="modal-info-side">
+                    <span class="tag" id="modal-tag"></span>
+                    <h2 id="modal-title"></h2>
+                    <p class="modal-author" id="modal-author"></p>
+                    <div class="modal-description" id="modal-desc"></div>
+                </div>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    modal.querySelector('.modal-close').addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    const openModal = (work) => {
+        document.getElementById('modal-img').src = work.imageUrl; // 詳細時は元画像を表示（軽量化解除）
+        document.getElementById('modal-tag').textContent = `#${work.category}`;
+        document.getElementById('modal-title').textContent = work.title;
+        document.getElementById('modal-author').textContent = `制作: ${work.author}`;
+        document.getElementById('modal-desc').textContent = work.description || '説明はありません。';
+        
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+
+    // --- Dynamic Gallery Loading ---
     const galleryGrid = document.querySelector('.gallery-grid');
     
-    // Googleドライブの画像を軽量化する関数
     const getThumbnailUrl = (url) => {
         if (url && url.includes('lh3.googleusercontent.com')) {
             const baseUrl = url.split('=')[0];
-            return `${baseUrl}=s600`; // 600pxサイズに縮小
+            return `${baseUrl}=s600`; 
         }
         return url;
     };
@@ -63,28 +104,33 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // 表示件数の制限（トップページ用）
         const displayWorks = limit ? works.slice(0, limit) : works;
 
         displayWorks.forEach((work, index) => {
             const delay = (index % 3) * 0.1;
             const thumbnailUrl = getThumbnailUrl(work.imageUrl);
             
-            const itemHtml = `
-                <div class="gallery-item fade-in-up" data-category="${work.category}" style="transition-delay: ${delay}s">
-                    <div class="gallery-img-wrapper">
-                        <img src="${thumbnailUrl}" alt="${work.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/f5f5f7/86868b?text=No+Image'">
-                    </div>
-                    <div class="gallery-info">
-                        <h3>${work.title}</h3>
-                        <p class="author-text">制作: ${work.author}</p>
-                        <div class="gallery-tags">
-                            <span class="tag">#${work.category}</span>
-                        </div>
+            const item = document.createElement('div');
+            item.className = 'gallery-item fade-in-up';
+            item.setAttribute('data-category', work.category);
+            item.style.transitionDelay = `${delay}s`;
+            item.innerHTML = `
+                <div class="gallery-img-wrapper">
+                    <img src="${thumbnailUrl}" alt="${work.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/f5f5f7/86868b?text=No+Image'">
+                </div>
+                <div class="gallery-info">
+                    <h3>${work.title}</h3>
+                    <p class="author-text">制作: ${work.author}</p>
+                    <div class="gallery-tags">
+                        <span class="tag">#${work.category}</span>
                     </div>
                 </div>
             `;
-            galleryGrid.insertAdjacentHTML('beforeend', itemHtml);
+            
+            // クリックイベントの追加
+            item.addEventListener('click', () => openModal(work));
+            
+            galleryGrid.appendChild(item);
         });
         
         initObserver();
