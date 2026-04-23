@@ -57,12 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h2 id="modal-title"></h2>
                     <p class="modal-author" id="modal-author"></p>
                     <div class="modal-description" id="modal-desc"></div>
-                    <div class="modal-comments-section">
-                        <h4>コメント</h4>
-                        <div id="modal-comments">
-                            <!-- Comments will be injected here -->
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -80,28 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const openModal = (work) => {
-        document.getElementById('modal-img').src = work.imageUrl;
+        document.getElementById('modal-img').src = work.imageUrl || 'https://via.placeholder.com/600x400/f5f5f7/86868b?text=NO+IMAGE';
         document.getElementById('modal-tag').textContent = `#${work.category}`;
         document.getElementById('modal-title').textContent = work.title;
         document.getElementById('modal-author').textContent = `制作: ${work.author}`;
         document.getElementById('modal-desc').textContent = work.description || '説明はありません。';
-        
-        const commentsContainer = document.getElementById('modal-comments');
-        commentsContainer.innerHTML = '';
-        
-        if (work.comments && work.comments.length > 0) {
-            work.comments.forEach(comment => {
-                const commentEl = document.createElement('div');
-                commentEl.className = 'comment-item';
-                commentEl.innerHTML = `
-                    <span class="comment-user">${comment.user}</span>
-                    <p class="comment-text">${comment.text}</p>
-                `;
-                commentsContainer.appendChild(commentEl);
-            });
-        } else {
-            commentsContainer.innerHTML = '<p class="text-gray text-sm">コメントはまだありません。</p>';
-        }
         
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -111,7 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const galleryGrid = document.querySelector('.gallery-grid');
     
     const getThumbnailUrl = (url) => {
-        if (url && url.includes('lh3.googleusercontent.com')) {
+        if (!url) return 'https://via.placeholder.com/600x400/f5f5f7/86868b?text=NO+IMAGE';
+        if (url.includes('lh3.googleusercontent.com')) {
             const baseUrl = url.split('=')[0];
             return `${baseUrl}=s600`; 
         }
@@ -139,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
             item.style.transitionDelay = `${delay}s`;
             item.innerHTML = `
                 <div class="gallery-img-wrapper">
-                    <img src="${thumbnailUrl}" alt="${work.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/f5f5f7/86868b?text=No+Image'">
+                    <img src="${thumbnailUrl}" alt="${work.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/f5f5f7/86868b?text=NO+IMAGE'">
                 </div>
                 <div class="gallery-info">
                     <h3>${work.title}</h3>
@@ -198,11 +176,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // Limit excerpt length
             const excerpt = col.content.length > 80 ? col.content.substring(0, 80) + '...' : col.content;
 
+            const imgUrl = col.imageUrl || 'https://via.placeholder.com/600x400/f5f5f7/86868b?text=NO+IMAGE';
             article.innerHTML = `
+                <div class="column-img-wrapper" style="height: 180px; overflow: hidden; border-radius: 12px; margin-bottom: 1rem;">
+                    <img src="${imgUrl}" alt="${col.title}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/f5f5f7/86868b?text=NO+IMAGE'">
+                </div>
                 <div class="column-date">${col.date}</div>
                 <h3>${col.title}</h3>
                 <p class="column-excerpt">${excerpt}</p>
-                <span class="column-source wood-text">${col.source || 'Googleフォームより自動生成'}</span>
             `;
             
             columnsGrid.appendChild(article);
