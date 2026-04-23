@@ -6,8 +6,14 @@
         "imageUrl": "file:///C:/Users/orang/.gemini/antigravity/brain/1fb81182-5890-4f90-849b-30c6b35bebcd/lego_club_hero_1776748830832.png",
         "description": "名大祭に向けて制作した大型作品です。内部の構造にもこだわりました。実際のテレビ塔のプロポーションを忠実に再現するために、何度も試作を重ねました。",
         "comments": [
-            { "user": "部長", "text": "名大祭での展示が楽しみです！" },
-            { "user": "通りすがりの部員", "text": "このトラス構造の組み方、参考になります。" }
+            {
+                "user": "部長",
+                "text": "名大祭での展示が楽しみです！"
+            },
+            {
+                "user": "通りすがりの部員",
+                "text": "このトラス構造の組み方、参考になります。"
+            }
         ]
     },
     {
@@ -17,7 +23,10 @@
         "imageUrl": "https://via.placeholder.com/600x400/E3000B/FFFFFF?text=Character+Work",
         "description": "名大の公式マスコットをレゴで再現しました。丸みのあるフォルムを出すのに苦労しましたが、テクニックパーツを隠し味に使うことで解決しました。",
         "comments": [
-            { "user": "広報担当", "text": "SNSで紹介してもいいですか？可愛すぎます！" }
+            {
+                "user": "広報担当",
+                "text": "SNSで紹介してもいいですか？可愛すぎます！"
+            }
         ]
     },
     {
@@ -27,8 +36,21 @@
         "imageUrl": "https://via.placeholder.com/600x400/0055BF/FFFFFF?text=Mechanism+Work",
         "description": "ボールを運ぶ自動機構です。テクニックパーツを多用し、1分間に60個のボールを安定して輸送できます。他大学のモジュールとの連結も可能です。",
         "comments": [
-            { "user": "OB", "text": "このカムの使い方は面白いね。昔より進化してる。" },
-            { "user": "新入生", "text": "これ、どうやって動いてるんですか？教えてください！" }
+            {
+                "user": "OB",
+                "text": "このカムの使い方は面白いね。昔より進化してる。"
+            },
+            {
+                "user": "新入生",
+                "text": "これ、どうやって動いてるんですか？教えてください！"
+            }
         ]
+    },
+    {
+        "title": "テスト",
+        "author": "テスト",
+        "category": "建築",
+        "imageUrl": "",
+        "description": "テスト"
     }
 ]
