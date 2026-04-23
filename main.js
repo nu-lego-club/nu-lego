@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadColumns = async () => {
         if (!columnsGrid) return;
         try {
-            const response = await fetch('data/columns.json');
+            const response = await fetch('data/Column.json');
             if (!response.ok) throw new Error('Network response was not ok');
             const columns = await response.json();
             
