@@ -57,6 +57,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h2 id="modal-title"></h2>
                     <p class="modal-author" id="modal-author"></p>
                     <div class="modal-description" id="modal-desc"></div>
+                    <div class="modal-comments-section">
+                        <h4>コメント</h4>
+                        <div id="modal-comments">
+                            <!-- Comments will be injected here -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -74,11 +80,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const openModal = (work) => {
-        document.getElementById('modal-img').src = work.imageUrl; // 詳細時は元画像を表示（軽量化解除）
+        document.getElementById('modal-img').src = work.imageUrl;
         document.getElementById('modal-tag').textContent = `#${work.category}`;
         document.getElementById('modal-title').textContent = work.title;
         document.getElementById('modal-author').textContent = `制作: ${work.author}`;
         document.getElementById('modal-desc').textContent = work.description || '説明はありません。';
+        
+        const commentsContainer = document.getElementById('modal-comments');
+        commentsContainer.innerHTML = '';
+        
+        if (work.comments && work.comments.length > 0) {
+            work.comments.forEach(comment => {
+                const commentEl = document.createElement('div');
+                commentEl.className = 'comment-item';
+                commentEl.innerHTML = `
+                    <span class="comment-user">${comment.user}</span>
+                    <p class="comment-text">${comment.text}</p>
+                `;
+                commentsContainer.appendChild(commentEl);
+            });
+        } else {
+            commentsContainer.innerHTML = '<p class="text-gray text-sm">コメントはまだありません。</p>';
+        }
         
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -153,6 +176,58 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     loadGallery();
+
+    // --- Dynamic Columns Loading ---
+    const columnsGrid = document.querySelector('.columns-grid');
+
+    const renderColumns = (columns) => {
+        if (!columnsGrid) return;
+        columnsGrid.innerHTML = '';
+
+        if (!columns || columns.length === 0) {
+            columnsGrid.innerHTML = '<div class="loading-spinner">活動報告がありません。</div>';
+            return;
+        }
+
+        columns.forEach((col, index) => {
+            const delay = (index % 3) * 0.1;
+            const article = document.createElement('article');
+            article.className = 'column-card fade-in-up';
+            article.style.transitionDelay = `${delay}s`;
+            
+            // Limit excerpt length
+            const excerpt = col.content.length > 80 ? col.content.substring(0, 80) + '...' : col.content;
+
+            article.innerHTML = `
+                <div class="column-date">${col.date}</div>
+                <h3>${col.title}</h3>
+                <p class="column-excerpt">${excerpt}</p>
+                <span class="column-source wood-text">${col.source || 'Googleフォームより自動生成'}</span>
+            `;
+            
+            columnsGrid.appendChild(article);
+        });
+
+        initObserver();
+    };
+
+    const loadColumns = async () => {
+        if (!columnsGrid) return;
+        try {
+            const response = await fetch('data/columns.json');
+            if (!response.ok) throw new Error('Network response was not ok');
+            const columns = await response.json();
+            
+            // Show only the latest 2 columns on the homepage
+            const isHomePage = document.body.classList.contains('home-page');
+            renderColumns(isHomePage ? columns.slice(0, 2) : columns); 
+        } catch (error) {
+            console.error('Columns loading error:', error);
+            columnsGrid.innerHTML = '<div class="loading-spinner">活動報告を読み込めませんでした。</div>';
+        }
+    };
+
+    loadColumns();
 
     // 3. Gallery Filtering
     const filterBtns = document.querySelectorAll('.filter-btn');
