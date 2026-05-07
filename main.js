@@ -74,7 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const openModal = (work) => {
-        document.getElementById('modal-img').src = work.imageUrl || 'data/no-image.jpg';
+        const modalImg = document.getElementById('modal-img');
+        modalImg.src = work.imageUrl || 'data/no-image.jpg';
+        modalImg.onerror = () => { modalImg.src = 'data/no-image.jpg'; };
         document.getElementById('modal-tag').textContent = `#${work.category}`;
         document.getElementById('modal-title').textContent = work.title;
         document.getElementById('modal-author').textContent = `制作: ${work.author}`;
@@ -185,6 +187,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h3>${col.title}</h3>
                 <p class="column-excerpt">${excerpt}</p>
             `;
+            
+            // カーソルをポインターにするスタイルをインラインで追加（またはCSSで）
+            article.style.cursor = 'pointer';
+            
+            // クリックイベントの追加
+            article.addEventListener('click', () => {
+                openModal({
+                    imageUrl: col.imageUrl, // もし画像がエラーの場合は no-image になるように onerror はモーダル側でも処理が必要かも
+                    category: '活動報告',
+                    title: col.title,
+                    author: col.author || '運営',
+                    description: col.content
+                });
+            });
             
             columnsGrid.appendChild(article);
         });
