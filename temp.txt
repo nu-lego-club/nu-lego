@@ -1,0 +1,53 @@
+活動報告（Columns）画像表示不具合 修正
+仕様書
+Status: Implementation Ready
+1. 概要
+Webサイトの「活動報告（Columns）」セクションにおいて、JSONデータに画像URLが含まれて
+いるにもかかわらず、画像が表示されず代替画像（no-image.jpg）が表示される不具合を修正す
+る。原因は、Google Driveの特定の直リンク形式がブラウザのセキュリティ制限によってブロック
+されていることにある。
+2. 現状の分析
+データ状況:Column.json には正しい imageUrl （drive.google.com/uc?id=...形式）が
+格納されている。
+権限状況: 対象の画像ファイルは「リンクを知っている全員が閲覧可」に設定されてい
+る。
+原因:uc?export=view 形式のURLは、ブラウザのサードパーティCookie制限やCORSポ
+リシーにより、<img>タグでの直接読み込みが失敗しやすい。
+3. 修正方針
+フロントエンドのJavaScript（main.js）において、Google DriveのURLを検知した場合、より安
+定して表示可能なサムネイル用APIエンドポイントに動的に変換する処理を追加する。
+変換ルール
+変換前 (uc形式) 変換後 (thumbnail形式)
+https://drive.google.com/uc?
+export=view&id=FILE_ID
+https://drive.google.com/
+thumbnail?id=FILE_ID&sz=w1000
+• 
+• 
+• 
+4. 具体的な修正コード
+main.js 内の renderColumns 関数を以下の通り修正する。
+修正箇所：約215行目付近
+// --- 修正前 ---
+const imgUrl = col.imageUrl || 'data/no-image.jpg';
+// --- 修正後 ---
+// 1. ベースURLの取得
+let imgUrl = col.imageUrl || 'data/no-image.jpg';
+// 2. Google DriveのURLが含まれている場合、サムネイルURLに変換
+if (imgUrl.includes('drive.google.com/uc')) {
+    const idMatch = imgUrl.match(/id=([^&]+)/);
+    if (idMatch && idMatch[1]) {
+        // 解像度を保つため sz=w1000 を付与
+        imgUrl = `https://drive.google.com/thumbnail?id=${idMatch[1]}
+&sz=w1000`;
+    }
+}
+5. Antigravity への指示用プロンプト案
+以下の内容をコピーして Antigravity に依頼してください。
+「活動報告の画像が表示されない問題を修正してください。
+main.js の renderColumns 関数内で、col.imageUrl が Google Drive の 
+'drive.google.com/uc' を含んでいる場合、
+正規表現で id を抽出し、'https://drive.google.com/thumbnail?id={id}&sz=w1000' 形
+式に変換してから img タグの src にセットするように書き換えてください。
+これによりブラウザの制限を回避して画像を表示できるようにします。」
+© 2026 Developer Orchestrator - Technical Specification File 

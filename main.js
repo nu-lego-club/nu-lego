@@ -178,7 +178,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // Limit excerpt length
             const excerpt = col.content.length > 80 ? col.content.substring(0, 80) + '...' : col.content;
 
-            const imgUrl = col.imageUrl || 'data/no-image.jpg';
+            let imgUrl = col.imageUrl || 'data/no-image.jpg';
+            if (imgUrl.includes('drive.google.com/uc')) {
+                const idMatch = imgUrl.match(/id=([^&]+)/);
+                if (idMatch && idMatch[1]) {
+                    imgUrl = `https://drive.google.com/thumbnail?id=${idMatch[1]}&sz=w1000`;
+                }
+            }
+            
             article.innerHTML = `
                 <div class="column-img-wrapper" style="height: 180px; overflow: hidden; border-radius: 12px; margin-bottom: 1rem;">
                     <img src="${imgUrl}" alt="${col.title}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" onerror="this.src='data/no-image.jpg'">
@@ -194,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // クリックイベントの追加
             article.addEventListener('click', () => {
                 openModal({
-                    imageUrl: col.imageUrl, // もし画像がエラーの場合は no-image になるように onerror はモーダル側でも処理が必要かも
+                    imageUrl: imgUrl, // 変換済みのURLをモーダルにも渡す
                     category: '活動報告',
                     title: col.title,
                     author: col.author || '運営',
