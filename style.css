@@ -379,7 +379,7 @@ a {
     content: '';
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to top, rgba(251, 251, 253, 1) 0%, rgba(251, 251, 253, 0.4) 100%);
+    background: rgba(0, 0, 0, 0.5); /* 写真を少し暗くして文字を目立たせる */
 }
 
 .hero-content {
@@ -395,24 +395,18 @@ a {
     letter-spacing: -0.04em;
     line-height: 1.1;
     margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, #1d1d1f 0%, #434345 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #ffffff;
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4); /* 白文字＋影 */
 }
 
 .hero-subtitle {
     font-size: clamp(1.1rem, 2vw, 1.5rem);
-    color: #000000;
-    -webkit-text-stroke: 1px #ffffff;
-    text-shadow: 
-        1px 1px 0 #fff, 
-        -1px -1px 0 #fff, 
-        1px -1px 0 #fff, 
-        -1px 1px 0 #fff,
-        0px 2px 4px rgba(0,0,0,0.5); /* 追加で少し影をつけるとより見やすくなります */
-    font-weight: 700;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 500;
     max-width: 600px;
     margin: 0 auto 3rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); /* 白文字＋影 */
+    line-height: 1.6;
 }
 
 .hero-actions {
