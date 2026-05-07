@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             // TODO: Replace with the deployed GAS Web App URL
-            const GAS_WEB_APP_URL = 'YOUR_GAS_WEB_APP_URL_HERE';
+            const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwVHebsb0iHsrzkvrQ1p9cmad3WV60f5-UPkstE8CvD-2AGmDfW59_iGRcKEsV2vuvA/exec';
 
             try {
                 const response = await fetch(GAS_WEB_APP_URL, {
