@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nu-lego-club.github.io/nu-lego/sitemap.xml
