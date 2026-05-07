@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const openModal = (work) => {
-        document.getElementById('modal-img').src = work.imageUrl || 'https://via.placeholder.com/600x400/f5f5f7/86868b?text=NO+IMAGE';
+        document.getElementById('modal-img').src = work.imageUrl || 'data/no-image.jpg';
         document.getElementById('modal-tag').textContent = `#${work.category}`;
         document.getElementById('modal-title').textContent = work.title;
         document.getElementById('modal-author').textContent = `制作: ${work.author}`;
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const galleryGrid = document.querySelector('.gallery-grid');
     
     const getThumbnailUrl = (url) => {
-        if (!url) return 'https://via.placeholder.com/600x400/f5f5f7/86868b?text=NO+IMAGE';
+        if (!url) return 'data/no-image.jpg';
         if (url.includes('lh3.googleusercontent.com')) {
             const baseUrl = url.split('=')[0];
             return `${baseUrl}=s600`; 
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
             item.style.transitionDelay = `${delay}s`;
             item.innerHTML = `
                 <div class="gallery-img-wrapper">
-                    <img src="${thumbnailUrl}" alt="${work.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/f5f5f7/86868b?text=NO+IMAGE'">
+                    <img src="${thumbnailUrl}" alt="${work.title}" loading="lazy" onerror="this.src='data/no-image.jpg'">
                 </div>
                 <div class="gallery-info">
                     <h3>${work.title}</h3>
@@ -176,10 +176,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Limit excerpt length
             const excerpt = col.content.length > 80 ? col.content.substring(0, 80) + '...' : col.content;
 
-            const imgUrl = col.imageUrl || 'https://via.placeholder.com/600x400/f5f5f7/86868b?text=NO+IMAGE';
+            const imgUrl = col.imageUrl || 'data/no-image.jpg';
             article.innerHTML = `
                 <div class="column-img-wrapper" style="height: 180px; overflow: hidden; border-radius: 12px; margin-bottom: 1rem;">
-                    <img src="${imgUrl}" alt="${col.title}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/f5f5f7/86868b?text=NO+IMAGE'">
+                    <img src="${imgUrl}" alt="${col.title}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" onerror="this.src='data/no-image.jpg'">
                 </div>
                 <div class="column-date">${col.date}</div>
                 <h3>${col.title}</h3>
