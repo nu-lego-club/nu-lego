@@ -6,13 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('load', () => {
         const preloader = document.getElementById('preloader');
         if (preloader) {
-            // アニメーションをしっかり見せるために少しだけ待機
+            // ページ読み込み完了後、すぐにフェードアウトさせる
             setTimeout(() => {
                 preloader.style.opacity = '0';
                 setTimeout(() => {
                     preloader.style.display = 'none';
                 }, 600);
-            }, 4000);
+            }, 200);
         }
     });
     
