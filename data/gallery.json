@@ -1,9 +1,79 @@
 [
     {
-        "title": "テスト",
-        "author": "テスト",
-        "category": "建築",
-        "imageUrl": "",
-        "description": "テスト"
+        "title": "名大ロゴ(ピクセルアート)",
+        "author": "パキノ",
+        "category": "その他",
+        "imageUrl": "https://drive.google.com/open?id=1ippcPDrzADCf8Fk_f2jJKsN2l9cyVpJO",
+        "description": "名古屋大学のロゴをピクセルアートで作りました。"
     },
-]
+    {
+        "title": "風神雷神",
+        "author": "n.a.b.e_mocs",
+        "category": "キャラクター",
+        "imageUrl": "https://drive.google.com/open?id=114g2xnMe8qaYDDpIrsgcstlm9lqfWS_a",
+        "description": "俵屋宗達の風神雷神図屏風に触発され屏風に生命を吹き込んだ。和の雰囲気を感じる配色、雰囲気の演出に力を入れた。またそれぞれの顔には様々な特殊なレゴパーツを使用しており(nice parts use)独特な凹凸を持つ顔を再現できた。"
+    },
+    {
+        "title": "ハウルの動く城",
+        "author": "n.a.b.e_mocs",
+        "category": "キャラクター",
+        "imageUrl": "https://drive.google.com/open?id=1uaFxwlc7O95FccUZcqXh4jtckhDEOuhs",
+        "description": "レゴにおける表現テクニックの一つである、本来の用途とは異なる用途でパーツを用いるNPU（Nice Parts Usage：見事なパーツの使い方）を数多用いた作品である。造形に全振りしており、360度どの角度から見ても一定のクオリティを担保している。個人的には私の作品の中で最もクレイジーな作品の一つであると考える。"
+    },
+    {
+        "title": "Ordovis, the Forbidden Wojira",
+        "author": "n.a.b.e_mocs",
+        "category": "キャラクター",
+        "imageUrl": "https://drive.google.com/open?id=1uaFxwlc7O95FccUZcqXh4jtckhDEOuhs",
+        "description": "レゴニンジャゴーに登場するキャラクター「Wojira」にデザイン的なインスピレーションを得て制作した。オルドビス紀より深海に生息していた巨大生物という設定である。実際の深海生物のデザインを取り入れ、それを様々なレゴパーツで再現した。間違いなくクレイジーな仕上がりになったと思う。"
+    },
+    {
+        "title": "白頭鷲",
+        "author": "n.a.b.e_mocs",
+        "category": "キャラクター",
+        "imageUrl": "https://drive.google.com/open?id=1869uKYUqxnzIBOmsqKDHktps-tvuBJfQ",
+        "description": "本作品は世界最大級のレゴサイトにて2025年の年間最優秀作品に選定された。体毛、羽根の一枚一枚を忠実に再現した造形に全振りした作品である。また自然の迫力を再現すべく鷲が獲物を捕らえようとする空間を制作した。意外にも水飛沫が人気であった。"
+    },
+    {
+        "title": "馬",
+        "author": "n.a.b.e_mocs",
+        "category": "キャラクター",
+        "imageUrl": "https://drive.google.com/open?id=1ZB7SawNmiNITfhBPANKeTlb6fD1ay85K",
+        "description": "2026年の午年を記念して制作した。テクニックパネル、アニマルボディパーツ等を駆使して馬の筋肉を確実に再現できた。お気に入りのポイントである。"
+    },
+    {
+        "title": "クラゲ",
+        "author": "n.a.b.e_mocs",
+        "category": "キャラクター",
+        "imageUrl": "https://drive.google.com/open?id=1vzCbFsuVjyg0lFNOndWi2XCXtD6OdLZa",
+        "description": "バイオニクルというレゴシリーズのパーツを数多用いた作品である。バイオニクルにはご覧のようなマーブル色のエレメントがたくさんあり、有機的にビルドするのに適していると考える。ぜひ手元に取り入れ作品にバイオニクルのパーツを使ってみて欲しい。"
+    },
+    {
+        "title": "ノクサファイラス",
+        "author": "n.a.b.e_mocs",
+        "category": "キャラクター",
+        "imageUrl": "https://drive.google.com/open?id=1qDrw3yg4rwZJNTcCvVrNoy0vNdYqwER8",
+        "description": "私がデザインしたサファイアをコンセプトにしたオリジナルの生き物である。全体のデザインも気に入っているが特に顔のデザインがお気に入りである。鱗のフィット感がたまらん。"
+    },
+    {
+        "title": "コンゴウインコ",
+        "author": "n.a.b.e_mocs",
+        "category": "キャラクター",
+        "imageUrl": "https://drive.google.com/open?id=1mhtZ_dQNw9ZfmnS3YFZYpmYBzTL021lD",
+        "description": "ポートフォリオにカラフルな色合いを入れたく作成した。非常にキャッチーな作品である思う。顔に赤い模様が確認できると思うがレゴ公式の輪ゴムパーツである。"
+    },
+    {
+        "title": "サキエル",
+        "author": "n.a.b.e_mocs",
+        "category": "キャラクター",
+        "imageUrl": "https://drive.google.com/open?id=1D96ezE6A25xi0iAUujwMNCPk5FXa8G0P",
+        "description": "テストエヴァンゲリオンに登場するサキエルを制作した。サキエルは非常に有機的な体をしており無機的な印象を持つレゴでの再現は困難であったが今作にてその問題は解決した。"
+    },
+    {
+        "title": "Colorful Valley",
+        "author": "Rin",
+        "category": "テクニック",
+        "imageUrl": "https://drive.google.com/open?id=1E_Z-gvfzlavvppfnQZIpAjOhGlF4PAAc",
+        "description": "LEGO Great Ball Contraption ,レゴで作った超絶技巧カラクリボール運搬装置。カラフルで見た目がいい作品です"
+    },
+    ]
