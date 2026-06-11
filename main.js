@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const openModal = (work) => {
         const modalImg = document.getElementById('modal-img');
-        modalImg.src = work.imageUrl || 'data/no-image.jpg';
+        modalImg.src = getThumbnailUrl(work.imageUrl);
         modalImg.onerror = () => { modalImg.src = 'data/no-image.jpg'; };
         document.getElementById('modal-tag').textContent = `#${work.category}`;
         document.getElementById('modal-title').textContent = work.title;
@@ -94,6 +94,23 @@ document.addEventListener('DOMContentLoaded', () => {
         if (url.includes('lh3.googleusercontent.com')) {
             const baseUrl = url.split('=')[0];
             return `${baseUrl}=s600`;
+        }
+        if (url.includes('drive.google.com')) {
+            let fileId = '';
+            if (url.includes('id=')) {
+                const matches = url.match(/id=([^&]+)/);
+                if (matches && matches[1]) {
+                    fileId = matches[1];
+                }
+            } else if (url.includes('/file/d/')) {
+                const matches = url.match(/\/file\/d\/([^/]+)/);
+                if (matches && matches[1]) {
+                    fileId = matches[1];
+                }
+            }
+            if (fileId) {
+                return `https://drive.google.com/thumbnail?id=${fileId}&sz=w1000`;
+            }
         }
         return url;
     };
@@ -178,13 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Limit excerpt length
             const excerpt = col.content.length > 80 ? col.content.substring(0, 80) + '...' : col.content;
 
-            let imgUrl = col.imageUrl || 'data/no-image.jpg';
-            if (imgUrl.includes('drive.google.com/uc')) {
-                const idMatch = imgUrl.match(/id=([^&]+)/);
-                if (idMatch && idMatch[1]) {
-                    imgUrl = `https://drive.google.com/thumbnail?id=${idMatch[1]}&sz=w1000`;
-                }
-            }
+            let imgUrl = getThumbnailUrl(col.imageUrl);
 
             article.innerHTML = `
                 <div class="column-img-wrapper" style="height: 180px; overflow: hidden; border-radius: 12px; margin-bottom: 1rem;">
@@ -282,6 +293,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Gallery Filtering
     const filterBtns = document.querySelectorAll('.filter-btn');
 
+    const categoryMap = {
+        'architecture': '建築',
+        'character': 'キャラクター',
+        'mechanism': 'テクニック',
+        'others': 'その他'
+    };
+
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             filterBtns.forEach(b => b.classList.remove('active'));
@@ -291,7 +309,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const items = document.querySelectorAll('.gallery-item');
 
             items.forEach(item => {
-                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                const itemCategory = item.getAttribute('data-category');
+                const mappedCategory = categoryMap[filterValue];
+                if (filterValue === 'all' || itemCategory === mappedCategory || itemCategory === filterValue) {
                     item.style.display = 'block';
                     setTimeout(() => { item.style.opacity = '1'; }, 10);
                 } else {
