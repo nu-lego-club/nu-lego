@@ -75,5 +75,12 @@
         "category": "テクニック",
         "imageUrl": "https://drive.google.com/open?id=1E_Z-gvfzlavvppfnQZIpAjOhGlF4PAAc",
         "description": "LEGO Great Ball Contraption ,レゴで作った超絶技巧カラクリボール運搬装置。カラフルで見た目がいい作品です"
+    },
+    {
+        "title": "テスト作品",
+        "author": "テスト太郎",
+        "category": "キャラクター",
+        "imageUrl": "https://drive.google.com/open?id=xxxxx",
+        "description": "テスト説明文"
     }
-    ]
+]
