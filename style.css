@@ -747,6 +747,13 @@ a {
     color: var(--color-text-light);
     font-size: 0.9rem;
 }
+.footer-disclaimer {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+    margin-top: 0.75rem;
+    line-height: 1.5;
+    max-width: 450px;
+}
 
 .footer-links {
     display: flex;
@@ -850,6 +857,7 @@ a {
     
     .contact-wrapper { padding: 2rem 1.5rem; }
     .footer-content { flex-direction: column; gap: 2rem; text-align: center; }
+    .footer-disclaimer { margin-left: auto; margin-right: auto; }
 }
 
 /* Modal Styles */
