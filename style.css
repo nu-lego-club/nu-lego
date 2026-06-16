@@ -895,6 +895,8 @@ a {
     transform: scale(0.9) translateY(20px);
     transition: all 0.5s var(--transition-medium);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
 }
 
 .modal-overlay.active .modal-content {
@@ -929,8 +931,8 @@ a {
 .modal-body {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
-    height: 100%;
-    max-height: 90vh;
+    flex: 1;
+    min-height: 0;
 }
 
 .modal-img-side {
